@@ -1,2 +1,4 @@
 
 alert('Your kitties will love this!');
+
+$('#cart_msg').html('You have <%= pluralize(@cart.count, "product") %> in your cart');

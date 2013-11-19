@@ -11,14 +11,15 @@ $(document).ready(function() {
 
 		var value_int = parseInt(value);
 
-		//var product_id = "pass this in with a button click"
+		var product_id = $(this).data('product-id');
+
 		if (value_int > 0) {
 			$.post('/store/add_cart', {
-				quantity : value_int
+				quantity : value_int,
 				product_id : product_id
 			});
 		} else {
-			alert(value_int + 'is not a number');
+			alert(value_int + 'is not a valid entry');
 		}
 	});
 });
