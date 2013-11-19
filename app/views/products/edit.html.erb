@@ -1,0 +1,34 @@
+<h1>Editing product</h1>
+<div style="float:left;width:40%">
+	<%= render 'form' %>
+</div>
+<div style="float:left;width:60%">
+	<h3>Assign A Cat-egory</h3>
+
+	<%= form_for(@product_category, url: assign_category_path) do |f| %>
+
+	<% if @product_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_category.errors.count, "error") %> prohibited this category from being added:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+		<%= f.hidden_field :product_id, value: @product.id %>
+		<%=f.select :category_id, Category.all.map { |cat| [cat.name, cat.id] } %>
+		<%= f.submit "Assign A Category" %> <hr/>
+		<% @product.categories.each do |category| %>
+		<%= category.name %>
+	<% end %>
+	<% end %>
+
+</div>
+<div style="clear:both"></div>
+
+<%= link_to 'Show', @product %> |
+<%= link_to 'Back', products_path %>
+

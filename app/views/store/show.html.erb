@@ -1,0 +1,23 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+  <strong>Price:</strong>
+  <%= @product.unit_price %>
+<p>
+  <strong>A little more info:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Brought to you by:</strong>
+  <%= @product.brand %>
+</p>
+
+<p>
+  <strong>Model num:</strong>
+  <%= @product.model_num %>
+</p>
+
+<%= link_to 'Back to browsing?', products_path %>

@@ -7,7 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="header">
+<%= link_to "ThunderCats", root_path %>
+	<% if user_signed_in? %>
+		Hi, <%= current_user.email %>
+		<%= link_to "Products", products_path%>
+		<%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+	<% end %>
+</div>
 
+<div>
+<%= notice %><br/>
+<%= alert %>
+</div>
 <%= yield %>
 
 </body>

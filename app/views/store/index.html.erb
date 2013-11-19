@@ -1,0 +1,25 @@
+	
+<h1>Welcome to Thundercats!</h1><br/>
+	<div class="cats">
+		<% @categories.each do |category| %>
+		<button><%= category.name %></button>
+		<% end %>
+		
+	</div>
+	<div>
+	<% @products.each do |product| %>
+		<div class="product-bubble">
+		 <h3><u><%= product.name %></u></h3>
+		 	by <em><%= product.brand %></em><hr/>
+		 		<div class="description">
+		 			<%= product.description %><hr/>
+		 		<div class="price">
+		 			<%= number_to_currency product.unit_price %>
+		 		</div>
+		 		Quantity: 
+		 			<input type="text" class="quantity" placeholder="How many?"/>
+		 			<button class="add-to-cart-button">Add to Cat</button>
+	 	</div>
+	 </div>
+	<% end %>
+</div>
