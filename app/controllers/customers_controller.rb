@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
         order = Order.new
         order.customer_id = @customer.id
         
-        sub_total = Cart.calculate_cart_total(current_cart)
+        sub_total = Cart.calculate_subtotal(current_cart)
         
         order.sub_total = sub_total
 
@@ -52,7 +52,8 @@ class CustomersController < ApplicationController
           line_item.order_id = order.id
           line_item.save
         end
-
+        #reassigns cart to an empty hash
+        session.clear
 
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }

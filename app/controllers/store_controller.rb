@@ -54,6 +54,9 @@ class StoreController < ApplicationController
     Rails.logger.info "SUBTOTAL= #{@subtotal}"
   end
 
+  def delete_cart
+  end
+
   def show
   	@category = Category.new
   	@product = @category.product

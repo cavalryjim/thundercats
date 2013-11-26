@@ -1,23 +1,41 @@
 <h1>Order History</h1>
 <p>Find me in app/views/orders/index.html.erb</p>
-<table>
+<table class="order-history-table">
 	<tr>
-		<th>ID</th>
-		<th>Customer Information</th>
-		<th>Sub Total</th>
-		<th>Sales Tax</th>
+		<th width="50">ID</th>
+		<th width="240">Customer Information</th>
+		<th width="100">Sub Total</th>
+		<th width="100">Sales Tax</th>
 		<th>Grand Total</th>
 	</tr>
 	<% @orders.each do |order| %>
-		<tr>
+		<tr class="order-detail" data-id="<%= order.id %>">
 			<td><%= order.id %></td>
 			<td>
 				<%= order.customer.name %><br/>
-				<%= prettify_address(order.customer) %>
+				<%= raw prettify_address(order.customer) %>
 			</td>
 			<td><%= number_to_currency(order.sub_total) %></td>
 			<td><%= number_to_currency(order.sales_tax) %></td>
 			<td><%= number_to_currency(order.grand_total) %></td>
+		</tr>
+		<tr id="contact_info_<%= order.id %>" class="contact-information">
+			<td colspan="2" valign="top">
+				<h5>Contact Information</h5>
+				<%= order.customer.email %><br/>
+				<%= order.customer.phone %><br/>
+			</td>
+			<td colspan="3" valign="top"</td>
+				<h4>Order</h4>
+				<% order.line_items.each do |line_item| %>
+				<%= line_item.quantity %> - 
+				<%= line_item.product.name %>
+				<%= number_to_currency(line_item.unit_price) %><br/>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr/></td>
 		</tr>
 	<% end %>
 </table>
