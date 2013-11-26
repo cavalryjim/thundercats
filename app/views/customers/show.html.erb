@@ -1,5 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Thank you for your business!</h2>
+<h4>Your order has been received</h4>
+
+  <% order = @customer.order %>
+  <% if ! order.blank? %>
+  <% order.line_items.each do |line_item| %>
+    <%= line_item.quantity %>
+    <%= line_item.product.name %>
+    <%= number_to_currency(line_item.unit_price) %>
+    <br/>
+  <% else %>
+    Your Cart is Empty
+  <% end %>
+
+    Sub Total: <%= order.sub_total %><br/>
+    Sales Tax(<%= Order.sales_tax_in_percent %>%): <%order.sales_tax %><br/>
+    Grand Total: <%= order.grand_total %><br/>
+
+<hr/>
+<h3>Your Contact Information</h3>
+
 <p>
   <strong>Name:</strong>
   <%= @customer.name %>

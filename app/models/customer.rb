@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
 
-	has_many :orders
+	has_one :order
 	validates_presence_of :name, :address1, :city, :zip
 	validates :email, uniqueness: true
   validate  :email_regex
@@ -10,5 +10,6 @@ class Customer < ActiveRecord::Base
       errors.add :email, "This is not a valid email format"
     end
   end
+end
 
 

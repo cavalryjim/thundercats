@@ -1,24 +1,14 @@
-<div style="position:relative">
+<div class="cart-panel">
 
-	<div style="position:absolute;width:200px;right:10px;background-color:beige;height:100px;padding:4px;border-radius:5px;border:solid blue">
-	<h4>Kitty Cart</h4>
+	<div class="cart">
+		<h4><u>Kitty Cart</u></h4>
 	<div id="cart_msg">
-		<% if @cart.count <= 0 %>
-	You have nothing for your kitties here
-		<% else %>
-	You have <%= pluralize(@cart.count, "item") %> in your cart
-	 	<% end %>
-
+		<%= render "cart" %>
 	</div>
 	</div>
 
 	<h1>Welcome to Thundercats!</h1><br/>
-	<div class="cats">
-		<% @categories.each do |category| %>
-		<button><%= category.name %></button>
-		<% end %>
-		
-	</div>
+	
 	<div>
 	<% @products.each do |product| %>
 		<div class="product-bubble">
@@ -32,7 +22,11 @@
 		 		
 		 		Quantity: 
 		 			<input type="text" class="quantity" placeholder="How many?"/>
-		 			<button class="add-to-cart-button" data-product-id="<%= product.id %>">Add to Cat</button>
+		 			<button class="add-to-cart-button" 
+		 			data-product-id="<%= product.id %>"
+		 			data-product-name="<%= product.name %>"
+		 			data-price="<%= product.unit_price %>">
+		 			Add to Cat</button>
 	 	</div>
 	 </div>
 	<% end %>

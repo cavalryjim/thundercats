@@ -1,0 +1,23 @@
+<h1>Order History</h1>
+<p>Find me in app/views/orders/index.html.erb</p>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Customer Information</th>
+		<th>Sub Total</th>
+		<th>Sales Tax</th>
+		<th>Grand Total</th>
+	</tr>
+	<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.id %></td>
+			<td>
+				<%= order.customer.name %><br/>
+				<%= prettify_address(order.customer) %>
+			</td>
+			<td><%= number_to_currency(order.sub_total) %></td>
+			<td><%= number_to_currency(order.sales_tax) %></td>
+			<td><%= number_to_currency(order.grand_total) %></td>
+		</tr>
+	<% end %>
+</table>

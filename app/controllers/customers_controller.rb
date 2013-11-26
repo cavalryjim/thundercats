@@ -28,6 +28,32 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        #save line items from session
+        current_cart = session[:cart]
+        order = Order.new
+        order.customer_id = @customer.id
+        
+        sub_total = Cart.calculate_cart_total(current_cart)
+        
+        order.sub_total = sub_total
+
+        order.sales_tax = sub_total * Order::CURRENT_SALES_TAX
+
+        order.grand_total = order.sub_total + order.sales_tax
+
+        order.save
+
+        current_cart.each do |key, item|
+          line_item = LineItem.new
+          line_item.product_id = key
+          line_item.quantity = item[0]
+          line_item.unit_price = item[2]
+          line_item.line_item_total = line_item.quantity * line_item.unit_price
+          line_item.order_id = order.id
+          line_item.save
+        end
+
+
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }
       else

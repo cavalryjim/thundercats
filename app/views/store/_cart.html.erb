@@ -1,0 +1,18 @@
+<% if @cart.count <= 0 %>
+	You have nothing for your kitties here
+<% else %>
+	You have <%= pluralize(@cart.count, "product") %> in your cart:
+	<button id="toggle_cart_button">View Cat</button>
+
+		<div id="cart_detail_panel">
+				<% @cart.each do |key, value| %>
+					<div><%= value[0] %> - <%= value[1] %>: <%= number_to_currency(value[2]) %>
+					</div>
+				<% end %>
+				<hr/>
+			<div id="cart_total">
+				Subtotal : <%= number_to_currency(@subtotal) %><br/>
+				<%= link_to "Place Order", new_customer_path %>
+			</div>
+		</div>
+<% end %>

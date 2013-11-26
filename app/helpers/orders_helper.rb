@@ -1,4 +1,4 @@
-module ApplicationHelper
+module OrdersHelper
 	def prettify_address(customer)
 		address= customer.address1 + 
 		if ! customer.address2.blank? 
@@ -7,7 +7,5 @@ module ApplicationHelper
 		address += "<br/" + customer.city
 		address += ", " + customer.city
 		address += "  " + customer.city
-		#return address   don't have to put this in ruby
 	end
-
 end

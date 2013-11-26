@@ -37,3 +37,25 @@ h1 {
 
 }
 
+.cart {
+	position:absolute;
+	width:200px;
+	right:10px;
+	background-color:beige;
+	padding:4px;
+	border-radius:10px;
+	border:solid blue
+}
+
+.cart-panel {
+	position:relative;
+}
+
+#cart_detail_panel {
+	display:none;
+}
+
+#cart_total {
+	text-align: :right;
+	font-weight: :bold;
+}
