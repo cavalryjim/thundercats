@@ -19,6 +19,13 @@ class StoreController < ApplicationController
     @subtotal = Cart.calculate_subtotal(@cart)
   end 
 
+  def remove_cart_item
+    product_id = params[:product_id]
+    @cart = session[:cart]
+    @cart.delete(product_id)
+    redirect_to store_index_path
+  end
+
   def add_cart
     product_id = params[:product_id]
     quantity = params[:quantity].to_i
