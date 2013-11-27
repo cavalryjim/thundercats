@@ -16,14 +16,17 @@ h1 {
 	border: 2px solid gray;
 	border-radius: 10px;
 	width: 100%;
-	height: 50px;
+	height: 30px;
 	padding: 10px;
-	background-color: #FF9900
+	background-color: #FF9900;
+	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+	text-shadow: 2px 2px #C0C0C0;
+	font-size: 40px;
 }
 .cats {
 	border: 2px solid gray;
 	border-radius: 10px;
-	width: 30%;
+	width: 50%;
 	height: 30px;
 	padding: 10px;
 	background-color: #FF9900;
@@ -33,7 +36,7 @@ h1 {
 	text-align: center;
 	font-size: 17px;
 	width: 100px;
-	background-color: #FF6600
+	background-color: #FF9900
 
 }
 
@@ -41,10 +44,10 @@ h1 {
 	position:absolute;
 	width:200px;
 	right:10px;
-	background-color:beige;
+	background-color:#fff;
 	padding:4px;
 	border-radius:10px;
-	border:solid blue
+	border:solid #03899C
 }
 
 .cart-panel {

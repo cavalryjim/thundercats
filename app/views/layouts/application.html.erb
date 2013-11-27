@@ -8,13 +8,13 @@
 </head>
 <body>
 <div class="header">
-<%= link_to "Thundercats", root_path %>
-<%= link_to "All Products", root_path %>
+<%= link_to "Home | ", root_path %>
+<%= link_to "All Products | ", root_path %>
 <%= link_to "Orders", orders_index_path %>
 
 <div class="cats">
 		<% Category.order('name asc').each do |category| %>
-		<button><%= link_to category.name ,product_by_category_path(category.name) %></button>
+		<button id= "categories"><%= link_to category.name ,product_by_category_path(category.name) %></button>
 		<% end %>
 		
 	</div>

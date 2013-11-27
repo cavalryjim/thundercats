@@ -11,3 +11,15 @@
  *= require_self
  *= require_tree .
  */
+.header {
+	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+	text-shadow: 2px 2px #C0C0C0;
+	font-size: 20px;
+}
+
+#categories {
+	font-size:17px;
+	Lucida Sans Unicode, Lucida Grande, sans-serif; 
+	border-radius: 5px;
+	background-color: #FFCC73;
+}
