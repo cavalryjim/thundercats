@@ -1,11 +1,14 @@
 class StoreController < ApplicationController
+
+  def contact_us
+  end
   
   def index
     category_name = params[:category_name]
     if category_name.blank?
-      @products = Product.all
+      @products = Product.where('quantity > 0').order(:name).page(params[:page])
     else
-      @products = Category.find_by_name(category_name).products
+      @products = Category.find_by_name(category_name).products.where('quantity > 0').order(:name).page(params[:page])
     end
   	
     Rails.logger.info "CART= #{session[:cart]}"

@@ -51,9 +51,15 @@ class CustomersController < ApplicationController
           line_item.line_item_total = line_item.quantity * line_item.unit_price
           line_item.order_id = order.id
           line_item.save
+
+            #updates product quantity in the database after the order is placed...
+          product = Product.find(line_item.product_id)
+          product.quantity = product.quantity - line_item.quantity
+          product.save
         end
+        
         #reassigns cart to an empty hash
-        session.clear
+        session.delete(:cart)
 
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }

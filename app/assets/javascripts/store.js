@@ -1,5 +1,23 @@
 /*Place all the behaviors and hooks related to the matching controller here.*/
 // All this logic will automatically be available in application.js.
+
+  function initialize() {
+  	var myLatlng = new google.maps.LatLng(24.551242, -81.800543);
+    var map_canvas = document.getElementById('map_canvas');
+    var map_options = {
+      center: myLatlng,
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(map_canvas, map_options)
+    var marker = new google.maps.Marker({
+    	position: myLatlng,
+    	map: map,
+    	title:"Hemingway House"
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+
 $(document).ready(function() {
 	//$('.quantity').val('How many?')
 
