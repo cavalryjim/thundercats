@@ -58,7 +58,7 @@ class CustomersController < ApplicationController
           product.save
         end
         
-        #reassigns cart to an empty hash
+        #deletes cart
         session.delete(:cart)
 
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
