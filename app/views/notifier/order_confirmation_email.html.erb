@@ -1,3 +1,7 @@
-<h1>Thanks you for shopping with us, <%= @customer.name %></h1>
 
-<p>Your kitties will love their new stuff!</p>
+<%= render "customers/order_confirmation" %>
+
+<p>Thank you for spreading the kitty love!</p>
+
+<p><%= link_to "here", root_path %> Continue Shoping!
+</p>
